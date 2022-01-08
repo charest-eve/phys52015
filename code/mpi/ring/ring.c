@@ -17,6 +17,14 @@ static void ring_reduce(const int *sendbuf, int *recvbuf, MPI_Comm comm)
    *
    * (x - y + N) % N;
    */
+
+   int rank, size;
+
+   MPI_Comm_rank(comm, &rank);
+   MPI_Comm_size(comm, &size);
+
+   int rank_next = (rank + 1) % size;
+   int rank_prev = rank == 0 ? size - 1: rank - 1;
 }
 
 int main(int argc, char **argv)
